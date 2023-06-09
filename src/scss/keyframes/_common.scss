@@ -251,3 +251,24 @@
     border: solid 1px #ccc;
   }
 }
+
+@keyframes width-wide {
+  from {
+    border: 0px solid black;
+    width: 0px;
+  }
+
+  to {
+    width: 200px;
+    border: 1px solid black;
+  }
+}
+
+@keyframes height-wide {
+  from {
+    height: 0px;
+  }
+  to {
+    height: 250px;
+  }
+}

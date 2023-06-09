@@ -1,0 +1,16 @@
+.app-title {
+  background-color: #463750;
+  width: 100%;
+  min-height: 15vh;
+  max-height: 100%;
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  span {
+    color: white;
+    font-size: 40px;
+    text-align: center;
+  }
+}

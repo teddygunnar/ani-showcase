@@ -1,0 +1,121 @@
+.box {
+  position: relative;
+  border: 1px solid black;
+  transition: all 200ms cubic-bezier(0.87, 0.03, 0.04, 0.93);
+  animation: width-wide 0.5s cubic-bezier(0.87, 0.03, 0.04, 0.93) 0.9s forwards;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    display: block;
+    animation: height-wide 0.5s cubic-bezier(0.87, 0.03, 0.04, 0.93)
+      calc(0.9s + 0.6s) forwards;
+  }
+  span {
+    position: absolute;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    font-size: 60px;
+    font-weight: bolder;
+    &:nth-child(4) {
+      color: black;
+      text-transform: uppercase;
+      left: 50%;
+      top: 30%;
+      animation: fadeIn 0.2s ease-in 0s forwards, to-white 0.2s ease-in forwards,
+        to-black 0.2s ease-in forwards, to-white 0.2s ease-in forwards;
+      animation-delay: calc(0.9s + 0.6s + 0.2s), calc(0.9s + 0.6s + 0.2s + 0.3s),
+        calc(0.9s + 0.6s + 0.2s + 0.3s + 0.3s),
+        calc(0.9s + 0.6s + 0.2s + 0.3s + 0.3s + 0.2s);
+    }
+
+    &:nth-child(6) {
+      color: black;
+      text-transform: uppercase;
+      left: 50%;
+      bottom: 0%;
+      animation: fadeIn 0.2s ease-in 0s forwards, to-white 0.2s ease-in forwards,
+        to-black 0.2s ease-in forwards, to-white 0.2s ease-in forwards;
+      animation-delay: calc(0.9s + 0.6s + 0.2s), calc(0.9s + 0.6s + 0.2s + 0.3s),
+        calc(0.9s + 0.6s + 0.2s + 0.3s + 0.3s),
+        calc(0.9s + 0.6s + 0.2s + 0.3s + 0.3s + 0.2s);
+    }
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.overlay-1 {
+  transform: translateX(-100%);
+  background-color: $theme-modal-color4;
+  animation: slide-right 0.3s cubic-bezier(0.87, 0.03, 0.04, 0.93) 1.9s both;
+}
+
+.overlay-2 {
+  transform: translateX(100%);
+  background-color: #fff;
+  animation: slide-left 0.3s cubic-bezier(0.87, 0.03, 0.04, 0.93) 2.3s both;
+}
+
+.overlay-3 {
+  transform: translateX(100%);
+  background-color: #2a2b3d;
+  animation: slide-left 0.3s cubic-bezier(0.87, 0.03, 0.04, 0.93) 2.4s both;
+}
+
+.divider {
+  border: 1px solid black;
+  width: calc(100% - 35px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  animation: border-to-white 0.2s ease-in-out 2.4s forwards;
+}
+
+@keyframes fill-bg {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes to-white {
+  from {
+    color: black;
+  }
+
+  to {
+    color: #fff;
+  }
+}
+
+@keyframes to-black {
+  from {
+    color: #fff;
+  }
+
+  to {
+    color: black;
+  }
+}
+
+@keyframes border-to-white {
+  from {
+    border: 1px solid black;
+  }
+
+  to {
+    border: 1px solid #fff;
+  }
+}
