@@ -7,6 +7,7 @@ type SlideButtonProps = {
 
 const SlideButton: FC<SlideButtonProps> = ({ components }) => {
   const [nav, setNav] = useState(1);
+
   const handleNextBtn = useCallback(() => {
     setNav((prev) => {
       const len = components.length - 1;
