@@ -15,9 +15,7 @@
   height: 150px;
   border-radius: 50%;
   transform: translateY(150%);
-  opacity: 0;
-  animation: slide-top 0.9s cubic-bezier(0.87, 0.03, 0.04, 0.93) forwards;
-  transition: all 200ms cubic-bezier(0.87, 0.03, 0.04, 0.93);
+  animation: slide-to-top 0.6s ease forwards;
   cursor: pointer;
   background-color: #f0f0f0;
   &:hover {
@@ -30,7 +28,6 @@
 
 .circle-overlay-1 {
   overflow: hidden;
-  transition: all 0.45s cubic-bezier(0, 0, 0, 1.01) 0s;
   &::after {
     content: "";
     display: block;
@@ -43,7 +40,6 @@
 
 .circle-overlay-2 {
   overflow: hidden;
-  transition: all 0.45s cubic-bezier(0, 0, 0, 1.01) 0s;
   &::after {
     content: "";
     display: block;
@@ -56,7 +52,6 @@
 
 .circle-overlay-3 {
   overflow: hidden;
-  transition: all 0.45s cubic-bezier(0, 0, 0, 1.01) 0s;
   &::after {
     content: "";
     display: block;
@@ -69,7 +64,6 @@
 
 .circle-overlay-4 {
   overflow: hidden;
-  transition: all 0.45s cubic-bezier(0, 0, 0, 1.01) 0s;
   &::after {
     content: "";
     display: block;
@@ -78,4 +72,32 @@
     background-color: #b980ae;
   }
   animation-delay: 0.5s;
+}
+
+@keyframes slide-to-top {
+  0% {
+    transform: translateY(150%);
+  }
+
+  50% {
+    transform: translateY(-10%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes waves {
+  0% {
+    transform: translateY(10%);
+  }
+
+  50% {
+    transform: translateY(-5%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
 }

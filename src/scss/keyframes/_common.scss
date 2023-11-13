@@ -225,6 +225,15 @@
   }
 }
 
+@keyframes turn1 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}
+
 @keyframes prev-show-button {
   from {
     transform: translate(-50%, -50%) scale(0);
@@ -270,5 +279,47 @@
   }
   to {
     height: 250px;
+  }
+}
+
+@keyframes height100-0 {
+  from {
+    height: 250px;
+  }
+
+  to {
+    height: 0px;
+  }
+}
+
+@keyframes width100-0 {
+  from {
+    width: 200px;
+    border: 1px solid black;
+  }
+
+  to {
+    width: 0px;
+    border: 0px solid black;
+  }
+}
+
+@keyframes rotate-in-origin-show {
+  from {
+    transform: rotate(-90deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes rotate-in-origin-hidden {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(90deg);
   }
 }

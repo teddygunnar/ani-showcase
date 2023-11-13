@@ -1,6 +1,6 @@
 import { FC, ReactNode } from "react";
 
-const Circles: FC<ReactNode> = () => {
+const Circles: FC = () => {
   return (
     <div className="circles-stage">
       <div className="circle circle-overlay-1" />

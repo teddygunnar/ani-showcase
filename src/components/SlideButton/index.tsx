@@ -1,4 +1,5 @@
-import { FC, useCallback, useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { FC, useCallback, useEffect, useState } from "react";
 import { ComponentArrType } from "../../App";
 
 type SlideButtonProps = {
@@ -6,7 +7,22 @@ type SlideButtonProps = {
 };
 
 const SlideButton: FC<SlideButtonProps> = ({ components }) => {
-  const [nav, setNav] = useState(1);
+  const [nav, setNav] = useState(0);
+
+  const keyPress = useCallback(
+    (event: KeyboardEvent) => {
+      const { key } = event;
+
+      if (key === "ArrowRight") {
+        handleNextBtn();
+      }
+
+      if (key === "ArrowLeft") {
+        handlePrevBtn();
+      }
+    },
+    [nav]
+  );
 
   const handleNextBtn = useCallback(() => {
     setNav((prev) => {
@@ -31,11 +47,25 @@ const SlideButton: FC<SlideButtonProps> = ({ components }) => {
       }
     });
   }, [components]);
+
+  useEffect(() => {
+    document.addEventListener("keydown", keyPress, false);
+  }, []);
+
+  console.log(nav);
+
   return (
     <>
       <div className="showcase">
-        <div className="title">{components[nav].title}</div>
-        <div className="container">{components[nav].comp(nav)}</div>
+        {components.map(
+          ({ Components, Title, props }, index) =>
+            index === nav && (
+              <>
+                <div className="title" key={index}>{Title}</div>
+                <div className="container" key={index}>{<Components {...props} />}</div>
+              </>
+            )
+        )}
       </div>
       <div className="prev-btn" onClick={handlePrevBtn} />
       <div className="next-btn" onClick={handleNextBtn} />

@@ -1,20 +1,39 @@
-import { FC, ReactNode } from "react";
-import { Example, ShowcaseContainer, Circles } from "./components";
+import { ComponentType, FC, ReactElement, useState } from "react";
+//prettier-ignore
+import { Example, ShowcaseContainer, Circles, RotateIn, Alert } from "./components";
+
+interface Props {
+  [key: string]: unknown;
+}
 
 export type ComponentArrType = {
-  title: string;
-  comp: FC<ReactNode>;
+  Title: string;
+  Components: ComponentType<any>;
+  props?: Props;
 };
 
 const App = () => {
+  const [isOpenAlert, setIsOpenAlert] = useState<boolean>(false);
   const componentArr: ComponentArrType[] = [
     {
-      title: "Border Wide",
-      comp: Example,
+      Title: "Reveal + Hide Card",
+      Components: Example,
     },
     {
-      title: "Circles Fade In",
-      comp: Circles,
+      Title: "Circles Slide In",
+      Components: Circles,
+    },
+    {
+      Title: "Rotate In + Tranform Origin",
+      Components: RotateIn,
+    },
+    {
+      Title: "Alert Message",
+      Components: Alert,
+      props: {
+        isOpenAlert,
+        setIsOpenAlert,
+      },
     },
   ];
   return (

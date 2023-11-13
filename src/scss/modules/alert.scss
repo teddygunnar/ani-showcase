@@ -1,0 +1,42 @@
+//COLOR
+$alert-font-color: #5d3523;
+$alert-btn-ok-color: #90bdbd;
+$alert-btn-cancel-color: #ea8b98;
+$alert-main-color: #e4d6ce;
+$alert-sub-color: #ffffff;
+
+//SIZING
+$radius: 14;
+$pc_width: 380;
+$sp_width: 90;
+$bar_height: 50;
+$line_width: 4;
+$button_size: 55;
+
+.alert-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.alert-wrapper {
+  padding: 20px;
+  padding-bottom: 50px;
+  padding-top: 30px;
+}
+
+.alert-title {
+  font-size: 20px;
+  margin: 0;
+  line-height: 34px;
+  color: #5d3523;
+  padding: 5px;
+  margin-bottom: 10px;
+  text-align: center;
+  border-bottom: dashed 1px #ccc;
+}
