@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { FC, useCallback, useEffect, useState } from "react";
-import { ComponentArrType } from "../../App";
+import { ComponentArrType } from "../core/_models";
 
 type SlideButtonProps = {
   components: ComponentArrType[];
@@ -52,8 +52,7 @@ const SlideButton: FC<SlideButtonProps> = ({ components }) => {
     document.addEventListener("keydown", keyPress, false);
   }, []);
 
-  console.log(nav);
-
+  //prettier-ignore
   return (
     <>
       <div className="showcase">

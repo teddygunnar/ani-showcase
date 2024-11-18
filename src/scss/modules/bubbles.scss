@@ -1,0 +1,131 @@
+.orbs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f39939;
+  overflow: hidden;
+  z-index: -10;
+
+  &__orb {
+    --orb-size: 80px;
+    position: absolute;
+    bottom: 0;
+    width: var(--orb-size);
+    height: var(--orb-size);
+    animation: float 14s linear infinite both;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-color: #fff;
+      animation: sway 8s ease-in-out infinite, flash 6s linear infinite;
+    }
+
+    &:nth-child(1) {
+      left: 40%;
+      animation-delay: 0s;
+
+      &::before {
+        animation-delay: 0s;
+      }
+    }
+    &:nth-child(2) {
+      left: 70%;
+      animation-delay: 1s;
+
+      &::before {
+        animation-delay: 1s;
+      }
+    }
+    &:nth-child(3) {
+      left: 10%;
+      animation-delay: 2s;
+
+      &::before {
+        animation-delay: 2s;
+      }
+    }
+    &:nth-child(4) {
+      left: 20%;
+      animation-delay: 4s;
+
+      &::before {
+        animation-delay: 4s;
+      }
+    }
+    &:nth-child(5) {
+      left: 50%;
+      animation-delay: 5s;
+
+      &::before {
+        animation-delay: 5s;
+      }
+    }
+    &:nth-child(6) {
+      left: 65%;
+      animation-delay: 8s;
+
+      &::before {
+        animation-delay: 8s;
+      }
+    }
+    &:nth-child(7) {
+      left: 8%;
+      animation-delay: 10s;
+
+      &::before {
+        animation-delay: 10s;
+      }
+    }
+    &:nth-child(8) {
+      left: 95%;
+      animation-delay: 14s;
+
+      &::before {
+        animation-delay: 14s;
+      }
+    }
+    &:nth-child(9) {
+      left: 45%;
+      animation-delay: 20s;
+
+      &::before {
+        animation-delay: 20s;
+      }
+    }
+  }
+}
+
+@keyframes float {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(-100vh);
+  }
+}
+
+@keyframes flash {
+  from,
+  to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes sway {
+  from,
+  to {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-80%);
+  }
+}

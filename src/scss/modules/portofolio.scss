@@ -1,0 +1,553 @@
+.porto-wrapper {
+  height: 100%;
+  width: 100;
+  background-color: #f39939;
+  background-image: url("/src/assets/images/bg.png");
+  background-size: 15px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.porto-container-hero {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+// .porto-divider {
+//   position: relative;
+//   width: 100%;
+//   height: 5rem;
+//   background-color: $theme-color-2;
+//   z-index: 1;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+
+//   span {
+//     font-size: 4rem;
+//     font-weight: bold;
+//     line-height: 1;
+//     color: #1f2126;
+//     // animation: fadeIn 0.8s ease-in both;
+
+//     // @for $i from 0 through 7 {
+//     //   &:nth-child(#{$i + 1}) {
+//     //     animation-delay: #{$i * 0.15s};
+//     //   }
+//     // }
+//   }
+
+//   &::after {
+//     content: "";
+//     position: absolute;
+//     top: 50%;
+//     left: 50%;
+//     transform: translate(-50%, -50%);
+//     width: 95%;
+//     height: 80%;
+//     border-radius: 50px;
+//     background-color: #fff;
+//     z-index: -1;
+//   }
+// }
+
+.porto-hero {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  height: 75%;
+  width: 100%;
+  background-color: #fff;
+  border: 10px solid $theme-color-2;
+  border-left: none;
+  border-right: none;
+  animation: heightOn 0.8s cubic-bezier(0.79, 0.05, 0.28, 1.07) 0.4s both;
+
+  &__title {
+    font-size: 4rem;
+    padding: 1rem;
+    color: #f39939;
+    position: absolute;
+    font-weight: bolder;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // grid-template-columns: repeat(7, auto);
+    // animation: maskIn 0.5s cubic-bezier(0.79, 0.05, 0.28, 1.07)
+    //     calc(0.4s + 0.25s) both,
+    //   fadeOut 0.5s ease-in calc(0.4s + 0.25s + 0.5s + 0.5s) forwards;
+
+    &__letter {
+      --letter-size: 6rem;
+      --delay-scaleInOut: 0.9s;
+      --delay-fadeIn: calc(0.9s + 0.5s);
+      position: relative;
+      width: var(--letter-size);
+      height: var(--letter-size);
+      animation: fadeOut 0.5s ease-in calc(0.9s + 0.5s + 1.5s + 1.25s) forwards;
+
+      @for $i from 0 through 6 {
+        &:nth-child(#{$i + 1}) {
+          span {
+            animation-delay: calc(var(--delay-fadeIn) + #{$i * 0.15s});
+          }
+          &::after {
+            animation-delay: calc(var(--delay-scaleInOut) + #{$i * 0.1s});
+          }
+        }
+      }
+
+      span {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: var(--letter-size);
+        font-weight: bold;
+        animation: fadeIn 0.01s ease-out calc(0.9s + 0.5s) both;
+      }
+
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $theme-color-2;
+        animation: scaleInOut 1.2s cubic-bezier(0.72, 0.01, 0.22, 0.99) 0.9s
+          both;
+      }
+    }
+  }
+
+  &__sub-title {
+    font-size: 4rem;
+    padding: 1rem;
+    color: #f39939;
+    position: absolute;
+    font-weight: bolder;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    animation: fadeOut 0.5s ease-in calc(0.9s + 0.5s + 1.5s + 1.25s) forwards;
+
+    &__text {
+      span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation: slideUp 0.45s ease-in-out 3.5s both;
+        opacity: 0;
+      }
+
+      &__content {
+        --delay-maskInText: 2.5s;
+        font-weight: bold;
+        line-height: 1;
+        padding: 1rem 2rem;
+        animation: maskInText 0.45s cubic-bezier(0.72, 0.01, 0.22, 0.99) both;
+        position: relative;
+        border: 1px solid white;
+
+        &:nth-child(2) {
+          position: relative;
+          color: #fff;
+          background-color: #f39939;
+          animation-delay: calc((var(--delay-maskInText) + 0s));
+        }
+
+        &:nth-child(3) {
+          position: absolute;
+          top: 16px;
+          left: 16px;
+          background-color: #fff;
+          overflow: hidden;
+          animation-delay: calc((var(--delay-maskInText) + 0.45s));
+        }
+      }
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    background-color: $theme-color-2;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+    animation: slideIn 0.5s ease-in calc(0.9s + 0.5s + 1.5s + 1s) both,
+      slideOut 0.5s ease-in calc(0.9s + 0.5s + 0.9s + 1s + 1.5s) forwards;
+  }
+
+  &__profile {
+    position: relative;
+    padding: 5rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+    box-sizing: border-box;
+    width: 100%;
+    animation: fadeIn 1s ease-in calc(0.9s + 0.5s + 0.9s + 0.5s + 1.5s) both;
+
+    // &__avatar {
+    //   width: 200px;
+    //   height: 200px;
+    //   border-radius: 50%;
+    //   display: grid;
+    //   align-content: center;
+    //   justify-items: center;
+    //   background: $theme-modal-color3;
+    //   box-shadow: 5px 5px $theme-modal-color4;
+    // }
+
+    &__desc {
+      // display: flex;
+      // flex-direction: column;
+      // gap: 1rem;
+      // font-size: 16px;
+      // padding: 1rem;
+      // flex: 1;
+      width: 100%;
+      text-align: left;
+      span {
+        &:nth-child(1) {
+          display: block;
+          font-size: 4em;
+          color: #f39939;
+          font-weight: bolder;
+          border: 1px solid violet;
+        }
+
+        &:nth-child(2) {
+          display: block;
+          font-size: 22px;
+          font-weight: lighter;
+          border: 1px solid violet;
+          margin-top: 1rem;
+        }
+      }
+    }
+
+    &__icons {
+      ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        margin: 0;
+        padding: 1rem;
+
+        li {
+          border: 1px solid $theme-modal-color3;
+          padding: 0.5rem;
+          border-radius: 100%;
+          display: flex;
+          width: 100%;
+          height: 100%;
+          justify-content: center;
+          align-content: center;
+          transition: all 150ms ease-in;
+          cursor: pointer;
+          &:hover {
+            scale: 1.5;
+            background-color: #f39939;
+          }
+          img {
+            width: 100%;
+            height: 25px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.porto-container-contents {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.porto-divider {
+  position: relative;
+  width: 100%;
+  height: 5rem;
+
+  background-color: $theme-color-2;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  span {
+    font-size: 4rem;
+    font-weight: bold;
+    line-height: 1;
+    color: #3d2213;
+    animation: fadeIn 0.8s ease-in both;
+    animation-play-state: paused; //paused
+    // animation-delay: calc(var(--title-length) * 0.15s);
+
+    &[play-state="true"] {
+      animation-play-state: running !important; //running
+    }
+
+    // @for $i from 0 through 7 {
+    //   &:nth-child(#{$i + 1}) {
+    //     animation-delay: #{$i * 0.15s};
+    //   }
+    // }
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95%;
+    height: 80%;
+    border-radius: 50px;
+    background-color: #fff;
+    z-index: -1;
+  }
+}
+
+.porto-contents {
+  height: 90%;
+  width: 92%;
+  border: 5px solid $theme-color-2;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 3rem;
+  margin: 2rem 0;
+  gap: 1rem;
+  display: grid;
+  grid-template-columns: auto 350px;
+  justify-content: center;
+  align-content: center;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  &__box {
+    box-sizing: border-box;
+    border: 5px solid $theme-color-2;
+    border-radius: 10px;
+    // padding: 1rem;
+    height: 100%;
+    width: 100%;
+    animation: slide-top 0.8s ease-in-out 0s both;
+    animation-play-state: paused; //paused
+    position: relative;
+
+    img {
+      background-size: contain;
+      width: 100%;
+      height: 100%;
+      // box-shadow: 2px 2px 3px #888888;
+      border-radius: 5px;
+    }
+
+    &[play-state="true"] {
+      animation-play-state: running !important; //running
+    }
+
+    @for $i from 0 through 4 {
+      &:nth-child(#{$i + 1}) {
+        animation-delay: #{$i * 0.1s};
+      }
+    }
+
+    &:nth-child(1) {
+      grid-row: span 4;
+    }
+    &:nth-child(2) {
+      grid-row: span 2;
+    }
+    &:nth-child(3) {
+      grid-row: span 2;
+    }
+  }
+
+  &__content-desc {
+    box-sizing: border-box;
+    background-color: $theme-color-2;
+    width: 350px;
+    height: 100%;
+    padding: 0 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+    position: absolute;
+    right: 0;
+    color: white;
+    transform: translateX(100%);
+
+    div:nth-child(1) {
+      span {
+        font-size: 24px;
+        font-weight: bolder;
+      }
+    }
+
+    &[open-desc="true"] {
+      animation: slideToLeft 0.8s cubic-bezier(0.93, 0.09, 0.16, 0.96) 0s
+        forwards;
+    }
+
+    &[open-desc="false"] {
+      animation: slideToRight 0.8s ease-in-out 0s forwards;
+    }
+
+    &__context {
+      text-align: justify;
+
+      a {
+        color: white;
+      }
+    }
+
+    &__desc-btn {
+      width: 120px;
+      height: 40px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px 10px 0 0;
+      color: white;
+      background-color: $theme-color-2;
+      position: absolute;
+      top: 50%;
+      left: -10%;
+      cursor: pointer;
+      transform: rotate(-90deg) translate(25%, -100%);
+    }
+  }
+}
+
+@keyframes slideToRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes slideToLeft {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes drawLine {
+  from {
+    background-position-x: 100%;
+  }
+  to {
+    background-position-x: 0%;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0%);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes maskIn {
+  from {
+    clip-path: polygon(0 0, 0 0, 100% 100%, 100% 100%);
+  }
+  to {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+@keyframes heightClose {
+  from {
+    height: 75%;
+  }
+  to {
+    height: 0%;
+  }
+}
+
+@keyframes heightOn {
+  from {
+    height: 0%;
+    border: none;
+  }
+  to {
+    height: 75%;
+    border: 10px solid $theme-color-2;
+    border-left: none;
+    border-right: none;
+  }
+}
+
+@keyframes borderHide {
+  from {
+    border: 10px solid $theme-color-2;
+    border-left: none;
+    border-right: none;
+  }
+  to {
+    border: 0px solid $theme-color-2;
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -175%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -155%);
+  }
+}

@@ -1,0 +1,250 @@
+.scroll-wrapper {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 100vh;
+  width: 100%;
+  background-color: #141824;
+
+  &__box {
+    background-color: #1f2126;
+    width: 75%;
+    height: 75%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow-y: auto;
+    overflow-x: hidden;
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &__1 {
+      background-color: #131316;
+      color: white;
+      height: 100%;
+      width: 100%;
+      display: grid;
+      align-content: center;
+      justify-content: center;
+      text-align: center;
+      transition: all 1s ease-in-out;
+
+      &__container {
+        padding: 1rem;
+        overflow: hidden;
+
+        &__text {
+          font-size: 4rem;
+          font-weight: bold;
+          line-height: 1;
+          animation: fadeInBlur 1.2s ease-in both;
+          animation-play-state: paused;
+
+          &.active {
+            animation-play-state: running;
+          }
+
+          @for $i from 0 through 10 {
+            &:nth-child(#{$i + 1}) {
+              animation-delay: #{$i * 0.15s};
+            }
+          }
+        }
+      }
+    }
+
+    &__2 {
+      background-color: #131316;
+      color: white;
+      height: 100%;
+      width: 100%;
+      display: grid;
+      align-content: center;
+      justify-content: center;
+      text-align: center;
+
+      &__container {
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        align-items: center;
+        justify-content: start;
+        overflow: hidden;
+
+        //prettier-ignore
+        &__mono {
+          position: relative;
+          animation: 
+            fadeIn 1s ease-out 0.5s both,
+            move 1s cubic-bezier(0.74, -0.01, 0.2, 1) calc(0.5s + 0.7s) both;
+          &__text {
+            font-size: 4rem;
+            color: #fff;
+            line-height: 1.2;
+            padding: 0 10px;
+            animation: scaleInText 1s cubic-bezier(0, 0.31, 0.04, 0.99) 0.5s both;
+          }
+          
+          &__line {
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            height: 1px;
+            width: 300px;
+            transform: translateX(-50%);
+
+            &::after {
+              content: "";
+              display: block;
+              width: 100%;
+              height: 100%;
+              background-color: #fff;
+              animation: scaleX 1s cubic-bezier(0, 0.31, 0.04, 0.99) 0.5s both;
+            }
+          }
+        }
+
+        &__chrome {
+          position: relative;
+          &__text {
+            font-size: 4rem;
+            color: #131316;
+            line-height: 1.2;
+            padding: 0 10px;
+            background-color: #fff;
+            padding: 0 10px;
+            animation: maskInScroll 1s cubic-bezier(0.74, -0.01, 0.2, 1)
+              calc(0.5s + 0.7s) both;
+          }
+
+          &__line {
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            width: 300px;
+            height: 1px;
+
+            &::after {
+              content: "";
+              display: block;
+              width: 100%;
+              height: 100%;
+              background-color: #fff;
+              animation: slideInOut 1.8s cubic-bezier(0, 0.31, 0.04, 0.99) 1.5s
+                both;
+            }
+          }
+        }
+      }
+    }
+
+    &__3 {
+      background-color: #131316;
+      color: white;
+      height: 100%;
+      width: 100%;
+      display: grid;
+      align-content: center;
+      justify-content: center;
+      text-align: center;
+
+      &__container {
+        padding: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+
+        &__text {
+          position: relative;
+          font-size: 7rem;
+          animation: textSlideIn 1.2s cubic-bezier(0, 0, 0.11, 1.01) 0s both;
+
+          @for $i from 0 through 4 {
+            &:nth-child(#{$i + 1}) {
+              animation-delay: #{$i * 0.12}s;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes textSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes maskInScroll {
+  from {
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+  }
+  to {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+@keyframes scaleX {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes scaleInText {
+  from {
+    letter-spacing: 4rem;
+    transform: scale(1.6);
+  }
+
+  to {
+    letter-spacing: 0;
+    transform: scale(1);
+  }
+}
+
+@keyframes move {
+  from {
+    transform: translateX(110px);
+  }
+
+  to {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes slideInOut {
+  from {
+    opacity: 0;
+    transform: translateX(100%) scale(1);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(-150%) scale(0);
+  }
+}
+
+@keyframes fadeInBlur {
+  from {
+    opacity: 0;
+    filter: blur(15px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0px);
+  }
+}

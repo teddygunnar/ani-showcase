@@ -70,6 +70,27 @@
   }
 }
 
+@keyframes scale1-0 {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(0);
+  }
+}
+
+@keyframes scaleInOut {
+  from,
+  to {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+}
+
 @keyframes scale0-1 {
   from {
     transform: scale(0);
@@ -321,5 +342,14 @@
 
   to {
     transform: rotate(90deg);
+  }
+}
+
+@keyframes maskInText {
+  from {
+    clip-path: polygon(-1% 0, -1% 0, -1% 100%, -1% 100%);
+  }
+  to {
+    clip-path: polygon(-1% 0, 101% 0, 101% 100%, -1% 100%);
   }
 }

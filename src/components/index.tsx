@@ -1,6 +1,10 @@
-export { default as Example } from "./modules/Example";
-export { default as Circles } from "./modules/Circles";
-export { default as RotateIn } from "./modules/RotateIn";
-export { default as Parallax } from "./modules/Parallax";
-export { default as Alert } from "./modules/Alert";
+export { default as Example } from "./modules/Showcase/ShowcaseComponent/Example";
+export { default as Circles } from "./modules/Showcase/ShowcaseComponent/Circles";
+export { default as RotateIn } from "./modules/Showcase/ShowcaseComponent/RotateIn";
+export { default as Alert } from "./modules/Showcase/ShowcaseComponent/Alert";
 export { default as ShowcaseContainer } from "./SlideButton";
+export { default as Parallax } from "./modules/Parallax/Parallax";
+export { default as ScrollAnimation } from "./modules/ScrollAnimation/ScrollAnimation";
+export { default as Showcase } from "./modules/Showcase/Showcase";
+export { default as Home } from "./modules/Home/Home";
+export { default as Portofolio } from "./modules/Portofolio/Portofolio";

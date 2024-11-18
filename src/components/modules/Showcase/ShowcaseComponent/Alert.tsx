@@ -5,7 +5,7 @@ interface AlertProps {
   setIsOpenAlert: (v: boolean) => void;
 }
 
-const Alert: FC<AlertProps> = ({ isOpenAlert, setIsOpenAlert }) => {
+const Alert: FC<AlertProps | object> = ({ isOpenAlert, setIsOpenAlert }) => {
   return (
     <div className="alert-container">
       {/* HEADER */}
