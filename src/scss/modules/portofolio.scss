@@ -9,13 +9,19 @@
 }
 
 .porto-container-hero {
-  height: 100vh;
   width: 100%;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  @include pc-layout {
+    height: 100vh;
+  }
+  
+  @include sp-layout {
+    height: 100%;
+  }
 }
 
 // .porto-divider {
@@ -73,6 +79,7 @@
     font-size: 4rem;
     padding: 1rem;
     color: #f39939;
+    text-shadow: 5px 5px #3d2213;
     position: absolute;
     font-weight: bolder;
     top: 40%;
@@ -133,9 +140,9 @@
   }
 
   &__sub-title {
-    font-size: 4rem;
     padding: 1rem;
     color: #f39939;
+    text-shadow: 5px 5px #3d2213;
     position: absolute;
     font-weight: bolder;
     top: 50%;
@@ -143,13 +150,20 @@
     transform: translate(-50%, 50%);
     animation: fadeOut 0.5s ease-in calc(0.9s + 0.5s + 1.5s + 1.25s) forwards;
 
+    @include pc-layout {
+      font-size: 4rem;
+    } 
+    @include sp-layout {
+      font-size: 3rem;
+    }
+
     &__text {
       span {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        animation: slideUp 0.45s ease-in-out 3.5s both;
+        animation: slideUp 0.45s ease-in-out 3s both;
         opacity: 0;
       }
 
@@ -187,57 +201,153 @@
     height: 100%;
     width: 100%;
     z-index: 10;
-    animation: slideIn 0.5s ease-in calc(0.9s + 0.5s + 1.5s + 1s) both,
-      slideOut 0.5s ease-in calc(0.9s + 0.5s + 0.9s + 1s + 1.5s) forwards;
+    animation: slideIn 0.5s ease-in calc(0.9s + 0.5s + 1s + 1s) both,
+      slideOut 0.5s ease-in calc(0.9s + 0.5s + 0.9s + 1s + 1s) forwards;
   }
 
   &__profile {
     position: relative;
-    padding: 5rem;
+    padding: 1rem 3rem;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
-    flex-direction: column;
-    gap: 1rem;
+    gap: 5rem;
     box-sizing: border-box;
     width: 100%;
     animation: fadeIn 1s ease-in calc(0.9s + 0.5s + 0.9s + 0.5s + 1.5s) both;
 
-    // &__avatar {
-    //   width: 200px;
-    //   height: 200px;
-    //   border-radius: 50%;
-    //   display: grid;
-    //   align-content: center;
-    //   justify-items: center;
-    //   background: $theme-modal-color3;
-    //   box-shadow: 5px 5px $theme-modal-color4;
-    // }
+    @include pc-layout {
+      flex-direction: row;
+
+    }
+    
+    @include sp-layout {
+      flex-direction: column;
+    }
+
+    &__avatar {
+      border-radius: 50%;
+      overflow: hidden;
+      object-fit: cover;
+      background: $theme-modal-color3;
+      box-shadow: 0.5rem 0.2rem $theme-modal-color2;
+      border: 3px solid $theme-modal-color2;
+
+      @include pc-layout {
+        width: 650px;
+        height: 450px;
+      }
+      
+      @include sp-layout {
+        width: 350px;
+        height: 350px;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+        object-position: center;
+      }
+    }
 
     &__desc {
-      // display: flex;
-      // flex-direction: column;
-      // gap: 1rem;
-      // font-size: 16px;
-      // padding: 1rem;
-      // flex: 1;
       width: 100%;
       text-align: left;
-      span {
-        &:nth-child(1) {
-          display: block;
-          font-size: 4em;
+
+      @include pc-layout {
+        span {
+          &:nth-child(1) {
+            display: block;
+            color: #f39939;
+            font-weight: lighter;
+            text-shadow: 1px 1px #3d2213
+          }
+  
+          &:nth-child(2) {
+            display: block;
+            font-size: 4em;
+            color: #f39939;
+            font-weight: bolder;
+            text-shadow: 5px 5px #3d2213;
+          }
+  
+          &:nth-child(3) {
+            display: block;
+            font-size: 22px;
+            font-weight: lighter;
+            margin-top: 1rem;
+          }
+  
+          label {
+            font-size: 1em;
+            color: #f39939;
+            font-weight: bolder;
+          }
+        }
+      }
+
+      @include sp-layout {
+        span {
+          &:nth-child(1) {
+            display: block;
+            color: #f39939;
+            font-weight: lighter;
+            text-shadow: 1px 1px #3d2213
+          }
+  
+          &:nth-child(2) {
+            display: block;
+            font-size: 3em;
+            text-align: center;
+            color: #f39939;
+            font-weight: bolder;
+            text-shadow: 5px 5px #3d2213;
+          }
+  
+          &:nth-child(3) {
+            display: block;
+            font-size: 22px;
+            font-weight: lighter;
+            margin-top: 1rem;
+            text-align: justify;
+          }
+  
+          label {
+            font-size: 1em;
+            color: #f39939;
+            font-weight: bolder;
+          }
+        }
+      }
+      
+      
+      &__list {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 2rem;
+        color: #3d2213;
+        margin-top: 2rem;
+        font-weight: bold;        
+        li:hover {
+          cursor: pointer;
+          transition: all 350ms;
           color: #f39939;
-          font-weight: bolder;
-          border: 1px solid violet;
         }
 
-        &:nth-child(2) {
-          display: block;
-          font-size: 22px;
-          font-weight: lighter;
-          border: 1px solid violet;
-          margin-top: 1rem;
+        a {
+          color: #3d2213;
+          text-decoration: none;
+
+          &:hover {
+            cursor: pointer;
+            transition: all 350ms;
+            color: #f39939;
+          }
         }
       }
     }
@@ -278,11 +388,16 @@
 }
 
 .porto-container-contents {
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  @include pc-layout {
+    height: 100vh;
+  }
+  @include sp-layout {
+    height: 100%;
+  }
 }
 
 .porto-divider {
@@ -301,19 +416,16 @@
     font-weight: bold;
     line-height: 1;
     color: #3d2213;
-    animation: fadeIn 0.8s ease-in both;
-    animation-play-state: paused; //paused
-    // animation-delay: calc(var(--title-length) * 0.15s);
+    
+    @include pc-layout {
+      animation: fadeIn 0.8s ease-in both;
+      animation-play-state: paused; //paused
 
     &[play-state="true"] {
       animation-play-state: running !important; //running
     }
 
-    // @for $i from 0 through 7 {
-    //   &:nth-child(#{$i + 1}) {
-    //     animation-delay: #{$i * 0.15s};
-    //   }
-    // }
+    }
   }
 
   &::after {
@@ -331,32 +443,50 @@
 }
 
 .porto-contents {
-  height: 90%;
-  width: 92%;
   border: 5px solid $theme-color-2;
   background-color: #fff;
   border-radius: 20px;
-  padding: 3rem;
   margin: 2rem 0;
   gap: 1rem;
-  display: grid;
-  grid-template-columns: auto 350px;
-  justify-content: center;
-  align-content: center;
+
   position: relative;
   box-sizing: border-box;
   overflow: hidden;
+  @include pc-layout {
+    height: 90%;
+    width: 92%;
+    display: grid;
+    grid-template-columns: auto 350px;
+    justify-content: center;
+    align-content: center;
+    padding: 3rem;
+  }
+  
+  @include sp-layout {
+    height: 100%;
+    width: 92%;
+    display: flex;
+    flex-direction: column;
+    padding: 0 3rem;
+  }
 
   &__box {
     box-sizing: border-box;
     border: 5px solid $theme-color-2;
     border-radius: 10px;
-    // padding: 1rem;
     height: 100%;
     width: 100%;
     animation: slide-top 0.8s ease-in-out 0s both;
     animation-play-state: paused; //paused
     position: relative;
+
+    @include pc-layout {
+    }
+    
+    @include sp-layout {
+      display: flex;
+      margin: 2rem 0;
+    }
 
     img {
       background-size: contain;
@@ -444,6 +574,52 @@
       transform: rotate(-90deg) translate(25%, -100%);
     }
   }
+}
+
+.porto-footer {
+ position: relative;
+ width: 100%;
+&__copyrights {
+  text-align: center;
+  color: rgba(190, 190, 190, 0.526);
+}
+ @include pc-layout {
+  height: 90px;
+  margin-top: 50px;
+}
+
+@include sp-layout {
+  height: 100px;
+  margin-top: 40px;
+}
+
+ div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-origin: left top;
+}
+
+div:nth-child(1) {
+  transform: translateY(-35%);
+  background-color: #2089a5;
+}
+
+div:nth-child(2) {
+  transform: translateY(-25%);
+  background-color: #c7aa71;
+}
+
+div:nth-child(3) {
+  transform: translateY(-13%);
+  background-color: #ad1341;
+}
+
+div:nth-child(4) {
+  background-color: #5d3523;
+}
 }
 
 @keyframes slideToRight {

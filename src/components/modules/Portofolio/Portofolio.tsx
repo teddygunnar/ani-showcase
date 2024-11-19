@@ -35,11 +35,15 @@ const Portofolio: FC = () => {
     }
   }, [playState]);
 
-  const { data, loading, error, reload } = useFirestoreCollection({
+  const { data, loading, error } = useFirestoreCollection({
     collectionName: "portofolio_images",
   });
 
-  console.log({ data });
+  const handleDownloadCV = () => {
+    const url = 'https://firebasestorage.googleapis.com/v0/b/portofolio-2869d.appspot.com/o/CV_Teddy_Gunnar_Solkjaer%202024.pdf?alt=media&token=c9fdaca0-d86a-448d-8ad3-c99d50606cff';
+
+    window.open(url, '_blank')
+  }
 
   return (
     <div className="porto-wrapper">
@@ -83,27 +87,28 @@ const Portofolio: FC = () => {
 
           <div className="porto-hero__overlay"></div>
           <div className="porto-hero__profile">
-            <div className="porto-hero__profile__desc">
-              <span>Lorem Ipsum Dolor</span>
-              <span>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit,
-                maiores, natus a aliquam laborum rem sapiente possimus aperiam
-                officia, impedit modi neque. Amet fuga illo tempore, atque
-                libero officia unde!
-              </span>
+            <div className="porto-hero__profile__avatar">
+              <img src='https://firebasestorage.googleapis.com/v0/b/portofolio-2869d.appspot.com/o/1611650805096.jpg?alt=media&token=efbe7da0-0a49-44d6-a653-95643fdb9a73' />
             </div>
+            <div className="porto-hero__profile__desc">
+              <span>My name is</span>
+              <span>
+                Teddy Gunnar Solkajer
+              </span>
+              <span>
+                As a passionate <label>Front-End Developer</label>, I specialize in designing and developing simple, user-friendly websites that prioritize elegance and functionality. My goal is to create web experiences that are not only visually appealing but also intuitive and accessible for everyone.
+              </span>
 
-            <div className="porto-hero__profile__icons">
-              <ul>
+              <ul className="porto-hero__profile__desc__list">
                 <li>
-                  <img src={linkedInIcons} />
+                  <a href='https://github.com/teddygunnar' target="_blank" rel="noopener noreferrer">
+                    Github
+                  </a>
                 </li>
                 <li>
-                  <img src={githubIcons} />
+                  <a href="https://www.linkedin.com/in/teddygunnars/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                 </li>
-                <li>
-                  <img src={envelopeIcons} />
-                </li>
+                <li onClick={handleDownloadCV}>Download my CV</li>
               </ul>
             </div>
           </div>
@@ -121,12 +126,13 @@ const Portofolio: FC = () => {
             return (
               <React.Fragment key={index + val.title}>
                 <div className="porto-divider">
-                  <span play-state={playState.toString()}>{val.title}</span>
+                  <span play-state={playState.toString()}>Projects</span>
                 </div>
                 <div className="porto-contents">
-                  {val.image_url.map((url: string) => {
+                  {val.image_url.map((url: string, idx: number) => {
                     return (
                       <div
+                        key={idx}
                         className="porto-contents__box"
                         play-state={playState.toString()}
                       >
@@ -139,7 +145,7 @@ const Portofolio: FC = () => {
                     open-desc={openDesc?.toString()}
                   >
                     <div>
-                      <span>Description</span>
+                      <span>{val.title}</span>
                     </div>
                     <div
                       className="porto-contents__content-desc__context"
@@ -156,6 +162,18 @@ const Portofolio: FC = () => {
               </React.Fragment>
             );
           })}
+      </div>
+
+
+      <div className="porto-footer">
+        <div />
+        <div />
+        <div />
+        <div />
+        <div className="porto-footer__copyrights">
+          <p>©Copyrights. All rights reserved.</p>
+          <p>This website is made with Vite & React (TypeScript)</p>
+        </div>
       </div>
     </div>
   );
