@@ -9,8 +9,8 @@ const AppRoutes = () => {
       <Route path="/scroll-animation" element={<ScrollAnimation />} />
       <Route path="/portofolio" element={<Portofolio />} />
       <Route path="/" element={<Home />} /> */}
-      <Route path="/profile" element={<Portofolio />} />
-      <Route path="/*" element={<Navigate to='/profile' />} />
+      <Route path="/" element={<Portofolio />} />
+      <Route path="/*" element={<Navigate to='/' />} />
     </Routes>
   );
 };
