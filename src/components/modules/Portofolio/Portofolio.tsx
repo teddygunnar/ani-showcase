@@ -1,7 +1,4 @@
-import React, { CSSProperties, FC, useEffect, useRef, useState } from "react";
-import linkedInIcons from "../../../assets/icons/linkedin.svg";
-import githubIcons from "../../../assets/icons/github.svg";
-import envelopeIcons from "../../../assets/icons/envelope.svg";
+import React, { FC, useEffect, useRef, useState } from "react";
 import { useFirestoreCollection } from "../../../hooks";
 import { DocumentData } from "firebase/firestore";
 

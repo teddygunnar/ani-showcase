@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import { Parallax, Showcase, Home, ScrollAnimation, Portofolio } from "../components";
+import { Portofolio } from "../components";
 
 const AppRoutes = () => {
   return (
